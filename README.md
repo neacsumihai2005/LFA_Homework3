@@ -1,14 +1,14 @@
 # LFA_Homework3
  
 ## Task1: Implement Cyk's Algorithm *(cyk_algorithm.cpp)*
-Input format *(test.in)*:
-*example:*
-4 -> 4 non-terminal symbols
-S -> symbol nr1 
-2 -> number of production rules for symbol nr1
-0 AB
-0 BC
-A -> symbol nr2
+Input format *(test.in)*:\
+*example:*\
+4 -> 4 non-terminal symbols\
+S -> symbol nr1\
+2 -> number of production rules for symbol nr1\
+0 AB\
+0 BC\
+A -> symbol nr2\
 2 -> number of production rules for symbol nr2
 0 BA
 1 a
