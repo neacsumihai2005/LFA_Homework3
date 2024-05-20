@@ -20,8 +20,9 @@ C -> symbol nr4\
 2 -> number of production rules for symbol nr4\
 0 AB\
 1 a
-
 stdin: message that needs to be verified
+
+This source outputs both in the user console and the *test.out* file. It also outputs the CFG in a nice format.
 
 ## Task2: Implement a pushdown automata *(pushdown_automata.cpp)*
 Input format *(test.in)*:\
