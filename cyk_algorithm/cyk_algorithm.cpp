@@ -5,37 +5,43 @@
 #include <assert.h>
 #include <set>
 
-std::set<char> dp[100][100];
-
 class Cyk{
     private:
-        std::set<char>symbolList;
+        std::vector< std::vector< std::set<char> > >dp;
+        std::set<char> symbolList;
         std::map<char, std::set<char> >parentsOfCharacter;
         std::map<std::string, std::set<char> >parentsOfString;
 
-        void outputSet(std::set<char> X){
+        void outputSet(std::ostream& out, std::set<char> X){
             if(X.empty()){
-                std::cout << "-";
+                out << "-";
                 return;
             }
 
-            std::cout << "(";
+            out << "(";
             std::set<char>::iterator it = X.begin();
             while(it != X.end()){
-                std::cout << (*it);
+                out << (*it);
 
                 it++;
                 if(it != X.end()){
-                    std::cout << ",";
+                    out << ",";
                 }
             }
-            std::cout << ")";
+            out << ")";
         }
 
     public:
         ~Cyk() = default;
 
         bool admits(std::string message){
+            dp.clear();
+
+            dp.resize(message.size() + 1);
+            for(int dim = 1; dim <= message.size(); dim++){
+                dp[dim].resize( message.size() - dim + 1 );
+            }
+
             ///compute for dim = 1
             for(int itr = 0; itr < message.size(); itr++){
                 for(auto it : parentsOfCharacter[ message[itr] ]){
@@ -43,7 +49,7 @@ class Cyk{
                     ///check if deepCopy or shallowCopy -- update: it's a deepCopy
                     ///also works even if right operand is empty()
                 }
-                ///dp[1][itr] = [lista simbolurilor in care se termina message[itr]]
+                ///ROMANIAN: dp[1][itr] = [lista simbolurilor in care se termina message[itr]]
             }
 
             for(int dim = 2; dim <= message.size(); dim++){
@@ -82,12 +88,12 @@ class Cyk{
                 }
             }
 
+            std::cout << "DP Table:" << "\n";
             for(int dim = message.size(); dim >= 1; dim--){
                 for(int i = 0; i <= message.size() - dim + 1 - 1; i++){
-                    outputSet(dp[dim][i]); std::cout << " ";
+                    outputSet(std::cout, dp[dim][i]); std::cout << " ";
                 }
                 std::cout << "\n";
-                ///dp[dim][pos];
             }
 
             for(auto letter : dp[message.size()][0]){
@@ -139,6 +145,40 @@ class Cyk{
             return in;
         }
 
+        friend std::ostream& operator << (std::ostream &out, Cyk &X){
+            out << X.symbolList.size() << " symbols:" << "\n";
+            for(auto symbol : X.symbolList){
+                out << symbol << " -> ";
+
+                std::vector <std::string> tmpOutput;
+                for(auto tempString : X.parentsOfString){
+                    if(tempString.second.find(symbol) != tempString.second.end()){
+                        tmpOutput.push_back(tempString.first);
+                    }
+                }
+                for(auto tempCharacter : X.parentsOfCharacter){
+                    if(tempCharacter.second.find(symbol) != tempCharacter.second.end()){
+                        std::string tmpString;
+                        tmpString = tempCharacter.first; ///turn char into string
+                        tmpOutput.push_back(tmpString);
+                    }
+                }
+
+                for(int itr = 0; itr < tmpOutput.size(); itr++){
+                    out << tmpOutput[itr];
+                    if(itr + 1 != tmpOutput.size()){
+                        out << "|";
+                    }
+                }
+                out << "\n";
+            }
+            out << "\n";
+
+            return out;
+        }
+
+
+
 };
 
 int main()
@@ -148,16 +188,24 @@ int main()
     fin >> X;
     fin.close();
 
+    std::ofstream fout ("test.out");
+    std::cout << X;
+    fout << X;
+
     std::string inputMessage;
     std::cout << "Input message = ";
     std::cin >> inputMessage;
 
     if(X.admits(inputMessage)){
-        std::cout << "Message is accepted!" << "\n";
+        std::cout << "Message " << inputMessage << " is accepted!" << "\n";
+        fout << "Message " << inputMessage << " is accepted!" << "\n";
     }
     else {
-        std::cout << "Message is NOT accepted!" << "\n";
+        std::cout << "Message " << inputMessage << " is NOT accepted!" << "\n";
+        fout << "Message " << inputMessage << " is NOT accepted!" << "\n";
     }
+
+    fout.close();
 
     return 0;
 }
