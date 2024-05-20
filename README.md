@@ -38,3 +38,5 @@ Input format *(test.in)*:\
 2 2 1 0 ^\
 2 3 ^ $ ^\
 000111 -> the message to be verified\
+\
+*Observation* : This input defines a pushdown automata that accepts {0^n 1^n : n >= 0)
