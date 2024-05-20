@@ -27,6 +27,7 @@ This source outputs both in the user console and the *test.out* file. It also ou
 ## Task2: Implement a pushdown automata *(pushdown_automata.cpp)*
 *("Choose between deterministic PDA and non-deterministic PDA" -> I chose to implement non-deterministic)*\
 Input format *(test.in)*:\
+LAMBDA = '^'\
 *example*:\
 4 -> number of states\
 0 1 2 3 -> the states\
