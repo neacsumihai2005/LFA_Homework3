@@ -1,5 +1,5 @@
 # LFA_Homework3
- 
+
 ## Task1: Implement Cyk's Algorithm *(cyk_algorithm.cpp)*
 Input format *(test.in)*:\
 *example:*\
@@ -40,3 +40,5 @@ Input format *(test.in)*:\
 000111 -> the message to be verified
 
 *Observation* : This input defines a pushdown automata that accepts {0^n 1^n : n >= 0)
+
+This source outputs both in the user console and the *test.out* file. It also outputs the automata in a nice format.
