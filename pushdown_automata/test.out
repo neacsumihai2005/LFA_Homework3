@@ -1,0 +1,19 @@
+4 nodes: 0 1 2 3 
+Hashed values: 0 1 2 3 
+Source(hashed) = 0
+Finish nodes(hashed): 3 
+Edges from node 0:
+( -> 1, acc '^', pop '^', push '$')
+
+Edges from node 1:
+( -> 1, acc '0', pop '^', push '0')
+( -> 2, acc '^', pop '^', push '^')
+
+Edges from node 2:
+( -> 2, acc '1', pop '0', push '^')
+( -> 3, acc '^', pop '$', push '^')
+
+Edges from node 3:
+none!
+
+Message 000111 is accepted!
