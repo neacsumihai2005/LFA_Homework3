@@ -20,3 +20,5 @@ C -> symbol nr4\
 2 -> number of production rules for symbol nr4\
 0 AB\
 1 a
+
+stdin: message that needs to be verified
