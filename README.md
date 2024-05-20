@@ -22,3 +22,19 @@ C -> symbol nr4\
 1 a
 
 stdin: message that needs to be verified
+
+## Task2: Implement a pushdown automata *(pushdown_automata.cpp)*
+Input format *(test.in)*:\
+*example*:*\
+4 -> number of states\
+0 1 2 3 -> the states\
+0 -> the source\
+1 -> number of terminal states\
+3 -> list of terminal states (all on the same line)\
+5 -> number of transitions (X, Y, accepted_char, popped_char, pushed_char) where the edge is directed from X to Y)\
+0 1 ^ ^ $\
+1 1 0 ^ 0\
+1 2 ^ ^ ^\
+2 2 1 0 ^\
+2 3 ^ $ ^\
+000111 -> the message to be verified\
