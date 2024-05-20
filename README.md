@@ -25,6 +25,7 @@ stdin: message that needs to be verified
 This source outputs both in the user console and the *test.out* file. It also outputs the CFG in a nice format.
 
 ## Task2: Implement a pushdown automata *(pushdown_automata.cpp)*
+*("Choose between deterministic PDA and non-deterministic PDA" -> I chose to implement non-deterministic)*
 Input format *(test.in)*:\
 *example*:*\
 4 -> number of states\
